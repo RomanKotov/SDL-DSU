@@ -1,5 +1,5 @@
 import socket
-from construct import (BitStruct, Bytes, Const, Enum, Flag, Float32b,
+from construct import (BitStruct, Bytes, Const, Enum, Flag, Float32l,
                        Int16ul, Int32ul, Int64ul, Int8ul, Struct)
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -109,11 +109,11 @@ class ControllerState:
 @dataclass
 class ControllerInfo:
     mac: int
-    battery: int
-    model: int
-    connection_type: int
-    slot: int
-    slot_state: int
+    battery: int = RH_BATTERY_NA
+    model: int = RH_MODEL_NA
+    connection_type: int = RH_CONNECTION_NA
+    slot: int = 0
+    slot_state: int = RH_SLOT_STATE_NOT_CONNECTED
     state: ControllerState = field(default_factory=lambda: ControllerState())
 
 
@@ -190,12 +190,12 @@ ControllerStatePayload = Struct(
     "firstTouch" / Touch,
     "secondTouch" / Touch,
     "timestamp" / Int64ul,
-    "accelX" / Float32b,
-    "accelY" / Float32b,
-    "accelZ" / Float32b,
-    "gyroPitch" / Float32b,
-    "gyroYaw" / Float32b,
-    "gyroRoll" / Float32b,
+    "accelX" / Float32l,
+    "accelY" / Float32l,
+    "accelZ" / Float32l,
+    "gyroPitch" / Float32l,
+    "gyroYaw" / Float32l,
+    "gyroRoll" / Float32l,
 )
 
 ConnectedControllersPayload = Struct(

@@ -51,6 +51,7 @@ class Server:
     def change_controller(self, slot: int, controller: d.ControllerInfo):
         with self.get_controllers() as c:
             c[slot] = controller
+        self.send_controller_state()
 
     def controller_state_to_info(
             self,
