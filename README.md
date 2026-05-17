@@ -1,4 +1,7 @@
-# SDL DSU
+# SDL DSU server
+
+Implementation of DualShock UDP (DSU) server via SDL bindings.
+Started implementing it to support calibration for gyro of 8BitDo SN30 Pro controller in Cemu on macOs.
 
 ## Development
 1. Create virtual environment `python -m venv .venv`
